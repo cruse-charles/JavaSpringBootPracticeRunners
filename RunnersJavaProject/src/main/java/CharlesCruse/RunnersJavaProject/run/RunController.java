@@ -40,7 +40,7 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    void update(@PathVariable Integer id, @RequestBody Run run) {
+    void update(@Valid @PathVariable Integer id, @RequestBody Run run) {
         runRepository.update(run);
     }
 
