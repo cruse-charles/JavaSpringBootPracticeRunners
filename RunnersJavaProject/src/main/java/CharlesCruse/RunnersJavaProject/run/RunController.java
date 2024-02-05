@@ -31,9 +31,16 @@ public class RunController {
         return run.get();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     void create(@RequestBody Run run) {
         runRepository.create(run);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    void update(@PathVariable Integer id, @RequestBody Run run) {
+        runRepository.update(run);
     }
 
 }

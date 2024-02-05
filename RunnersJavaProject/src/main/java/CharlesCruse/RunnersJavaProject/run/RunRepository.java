@@ -27,6 +27,15 @@ public class RunRepository {
         runs.add(run);
     }
 
+    void update(Run run) {
+        Optional<Run> existingRun = findById(run.id());
+        if(existingRun.isEmpty()) {
+            throw new IllegalArgumentException("Run not found");
+        }
+        runs.remove(existingRun.get());
+        runs.add(run);
+    }
+
     @PostConstruct
     private void init() {
         runs.add(new Run(1, "Morning Run", Location.OUTDOOR, LocalDateTime.now(), LocalDateTime.now().plusHours(1), 5));
